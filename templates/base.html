@@ -1,0 +1,31 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tugas Kelompok</title>
+    <style>
+        body {
+            background-color: {{ style.bg_color }};
+            font-family: {{ style.font_family }};
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav style="padding: 10px; background: rgba(0,0,0,0.1);">
+        {% if user.is_authenticated %}
+            Halo, {{ user.email }} | 
+            <form method="post" action="{% url 'account_logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'account_login' %}">Login Manual</a> | 
+            <a href="{% url 'account_signup' %}">Daftar Akun</a> | 
+            <a href="{% provider_login_url 'google' %}">Login dengan Google</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

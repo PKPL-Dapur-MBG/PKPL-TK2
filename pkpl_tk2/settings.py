@@ -143,8 +143,9 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -163,3 +164,9 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
+ALLOWED_EMAILS = [
+    e.strip()
+    for e in os.getenv('ALLOWED_EMAILS', '').split(',')
+    if e.strip()
+]

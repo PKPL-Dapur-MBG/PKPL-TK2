@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Ubah Tampilan Website</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Warna Latar (Hex):</label><br>
+        <input type="color" name="bg_color" value="{{ style.bg_color }}"><br><br>
+
+        <label>Font Family:</label><br>
+        <select name="font_family">
+            <option value="Arial, sans-serif" {% if style.font_family == 'Arial, sans-serif' %}selected{% endif %}>Arial</option>
+            <option value="'Times New Roman', serif" {% if style.font_family == "'Times New Roman', serif" %}selected{% endif %}>Times New Roman</option>
+            <option value="'Courier New', monospace" {% if style.font_family == "'Courier New', monospace" %}selected{% endif %}>Courier New</option>
+        </select><br><br>
+
+        <button type="submit">Simpan Perubahan</button>
+        <a href="{% url 'home' %}">Batal</a>
+    </form>
+{% endblock %}

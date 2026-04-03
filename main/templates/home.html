@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Biodata Kelompok Kami</h1>
+    <ul>
+        <li>Ketua: Budi (ketua@gmail.com)</li>
+        <li>Anggota 1: Siti (anggota@gmail.com)</li>
+    </ul>
+
+    {% if is_anggota %}
+        <br>
+        <a href="{% url 'edit_style' %}"><button>⚙️ Edit Tampilan Website</button></a>
+    {% endif %}
+{% endblock %}
