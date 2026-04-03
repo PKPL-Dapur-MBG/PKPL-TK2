@@ -3,6 +3,8 @@ from django.db import models
 class WebStyle(models.Model):
     bg_color = models.CharField(max_length=20, default="#f3f4f6") 
     
+    text_color = models.CharField(max_length=20, default="#1f2937")
+
     secondary_color = models.CharField(max_length=20, default="#4f46e5")
 
     btn_text_color = models.CharField(max_length=20, default="#ffffff")
