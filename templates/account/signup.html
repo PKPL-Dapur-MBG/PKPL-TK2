@@ -9,19 +9,18 @@
 
     <form class="signup" method="POST" action="{% url 'account_signup' %}">
         {% csrf_token %}
-        
         <div class="text-sm font-medium text-gray-700 text-left">
             {{ form.as_p }}
         </div>
         
-        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors mt-4">
+        <button type="submit" class="w-full bg-accent hover-bg-accent text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors mt-4">
             Daftar Sekarang
         </button>
     </form>
 
     <div class="mt-8 text-center text-sm text-gray-600">
         Sudah memiliki akun? 
-        <a href="{% url 'account_login' %}" class="font-semibold text-blue-600 hover:text-blue-800 transition">Masuk di sini</a>
+        <a href="{% url 'account_login' %}" class="font-semibold text-accent hover:opacity-80 transition">Masuk di sini</a>
     </div>
 </div>
 {% endblock %}

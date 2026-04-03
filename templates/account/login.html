@@ -21,19 +21,18 @@
 
     <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
-        
         <div class="text-sm font-medium text-gray-700 text-left">
             {{ form.as_p }}
         </div>
         
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors mt-4">
+        <button type="submit" class="w-full bg-accent hover-bg-accent text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors mt-4">
             Masuk
         </button>
     </form>
 
     <div class="mt-8 text-center text-sm text-gray-600">
         Belum punya akun? 
-        <a href="{% url 'account_signup' %}" class="font-semibold text-blue-600 hover:text-blue-800 transition">Daftar sekarang</a>
+        <a href="{% url 'account_signup' %}" class="font-semibold text-accent hover:opacity-80 transition">Daftar sekarang</a>
     </div>
 </div>
 {% endblock %}

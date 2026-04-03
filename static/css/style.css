@@ -30,8 +30,8 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    border-color: var(--secondary-color); 
+    box-shadow: 0 0 0 3px rgba(var(--secondary-color-rgb, 79, 70, 229), 0.2);
     background-color: #ffffff;
 }
 

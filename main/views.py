@@ -13,7 +13,6 @@ from django.contrib.auth.decorators import login_required
 from main.models import WebStyle
 
 def home(request):
-    style = WebStyle.get_settings()
     is_anggota = request.user.is_authenticated and request.user.email in settings.ALLOWED_EMAILS
 
     anggota_kelompok = [
@@ -64,7 +63,6 @@ def home(request):
     ]
 
     context = {
-        'style': style,
         'is_anggota': is_anggota,
         'anggota_kelompok': anggota_kelompok
     }
@@ -78,7 +76,9 @@ def edit_style(request):
     style = WebStyle.get_settings()
     if request.method == "POST":
         style.bg_color = request.POST.get('bg_color')
+        style.text_color = request.POST.get('text_color')
         style.secondary_color = request.POST.get('secondary_color')
+        style.btn_text_color = request.POST.get('btn_text_color')
         style.font_family = request.POST.get('font_family')
         style.save()
         return redirect('home')

@@ -12,17 +12,25 @@
     <style>
         :root {
             --bg-color: {{ style.bg_color|default:"#f3f4f6" }};
+            --text-color: {{ style.text_color|default:"#1f2937" }};
             --secondary-color: {{ style.secondary_color|default:"#4f46e5" }};
+            --btn-text-color: {{ style.btn_text_color|default:"#ffffff" }};
             --font-family: {{ style.font_family|default:"ui-sans-serif, system-ui, sans-serif"|safe }};
         }
         
         body {
             background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: var(--font-family);
             transition: all 0.3s ease;
         }
 
-        .bg-accent { background-color: var(--secondary-color) !important; }
+        .text-main { color: var(--text-color) !important; }
+
+        .bg-accent { 
+            background-color: var(--secondary-color) !important; 
+            color: var(--btn-text-color) !important;
+        }
         .text-accent { color: var(--secondary-color) !important; }
         .border-accent { border-color: var(--secondary-color) !important; }
         .hover-bg-accent:hover { filter: brightness(0.85); transition: 0.3s; }
@@ -35,9 +43,6 @@
     <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {% block content %}{% endblock %}
     </main>
-
-    {% include "footer.html" %}
-
     {% block scripts %}{% endblock %}
 </body>
 </html>
