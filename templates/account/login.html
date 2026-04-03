@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-10 bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+    <div class="text-center mb-8">
+        <h2 class="text-3xl font-extrabold text-gray-900">Masuk ke Akun</h2>
+        <p class="text-gray-500 mt-2 text-sm">Silakan login untuk melanjutkan.</p>
+    </div>
+
+    <a href="{% provider_login_url 'google' %}" class="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-2.5 px-4 rounded-lg shadow-sm transition-all mb-6">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="w-5 h-5">
+        Masuk dengan Google
+    </a>
+
+    <div class="flex items-center mb-6">
+        <div class="flex-grow border-t border-gray-200"></div>
+        <span class="px-3 text-gray-400 text-sm">atau dengan email</span>
+        <div class="flex-grow border-t border-gray-200"></div>
+    </div>
+
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        
+        <div class="text-sm font-medium text-gray-700 text-left">
+            {{ form.as_p }}
+        </div>
+        
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors mt-4">
+            Masuk
+        </button>
+    </form>
+
+    <div class="mt-8 text-center text-sm text-gray-600">
+        Belum punya akun? 
+        <a href="{% url 'account_signup' %}" class="font-semibold text-blue-600 hover:text-blue-800 transition">Daftar sekarang</a>
+    </div>
+</div>
+{% endblock %}
