@@ -47,11 +47,11 @@
             <select name="font_family" class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-md border bg-gray-50">
                 <option value="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" 
                     {% if 'ui-sans-serif' in style.font_family %}selected{% endif %}>
-                    Modern Sans-Serif (Standar Web)
+                    Modern Sans-Serif
                 </option>
                 <option value="ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif" 
                     {% if 'ui-serif' in style.font_family or 'Times' in style.font_family %}selected{% endif %}>
-                    Elegan Serif (Times New Roman / Georgia)
+                    Times New Roman / Georgia
                 </option>
                 <option value="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" 
                     {% if 'monospace' in style.font_family %}selected{% endif %}>
