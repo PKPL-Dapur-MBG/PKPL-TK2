@@ -19,47 +19,47 @@ def home(request):
     anggota_kelompok = [
         {
             "id": 1,
-            "nama": "Anggota Pertama",
-            "npm": "2206123451",
-            "role": "Hustler / PM",
-            "bio": "Mengatur jalannya proyek dan memastikan semua selesai tepat waktu.",
+            "nama": "Ilham Afuw Ghaniy",
+            "npm": "2406403495",
+            "role": "Member",
+            "bio": "nama lengkap Ilham Afuw Ghaniy,biasa dipanggil Ilham. Asal Depok. Hobi nonton film,main game, sama baca buku. Lumayan suka Ama makanan seafood.",
             "prodi": "Ilmu Komputer",
-            "foto": "img/anggota1.png",
-            "linkedin": "https://linkedin.com/in/username1",
+            "foto": "images/ilham.jpg",
+            "linkedin": "https://www.linkedin.com/in/ilham-afuw-ghaniy-501576323/",
             "github": "https://github.com/username1"
         },
         {
             "id": 2,
-            "nama": "Anggota Kedua",
-            "npm": "2206123452",
-            "role": "Hipster / UI/UX",
-            "bio": "Mendesain antarmuka yang cantik menggunakan Tailwind dan Figma.",
+            "nama": "Wildan Muhammad Hafidz",
+            "npm": "2406495962",
+            "role": "Member",
+            "bio": "hobi maen game,pengen ipk gede tapi males",
             "prodi": "Sistem Informasi",
-            "foto": "img/anggota2.png",
+            "foto": "images/wildan.jpg",
             "linkedin": "https://linkedin.com/in/username2",
-            "github": "https://github.com/username2"
+            "github": "https://github.com/Wildann133"
         },
         {
             "id": 3,
-            "nama": "Anggota Ketiga",
-            "npm": "2206123453",
-            "role": "Hacker / Backend",
-            "bio": "Membangun sistem autentikasi dan integrasi database Django.",
+            "nama": "Dzaky Ahmad Trinindito",
+            "npm": "2406406351",
+            "role": "Member",
+            "bio": "aku gampang tertarik dengan hal baru jadi banyak banget interestnya",
             "prodi": "Ilmu Komputer",
-            "foto": "img/anggota3.png",
-            "linkedin": "https://linkedin.com/in/username3",
+            "foto": "images/dzaky.jpg",
+            "linkedin": "https://www.linkedin.com/in/dzaky-ahmad-trinindito-37b63a322/",
             "github": "https://github.com/username3"
         },
         {
             "id": 4,
-            "nama": "Anggota Keempat",
-            "npm": "2206123454",
-            "role": "Hacker / Frontend",
-            "bio": "Mengubah desain menjadi kode HTML dan Tailwind yang responsif.",
-            "prodi": "Sistem Informasi",
-            "foto": "img/anggota4.png",
-            "linkedin": "https://linkedin.com/in/username4",
-            "github": "https://github.com/username4"
+            "nama": "Rexy Adrian Fernando",
+            "npm": "2406495666",
+            "role": "Member",
+            "bio": "6767",
+            "prodi": "Ilmu Komputer",
+            "foto": "images/rexy.jpg",
+            "linkedin": "https://www.linkedin.com/in/rexy-adrian-fernando/",
+            "github": "https://github.com/rexyadrian"
         }
     ]
 

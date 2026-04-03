@@ -8,7 +8,8 @@
     
     {% if is_anggota %}
     <div class="mt-6">
-        <a href="{% url 'edit_style' %}" class="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full shadow-lg font-semibold transition">
+        <a href="{% url 'edit_style' %}" 
+           class="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full shadow-lg font-semibold transition">
             <i class="fas fa-palette"></i> Edit Tema Website
         </a>
     </div>
@@ -17,80 +18,122 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     {% for anggota in anggota_kelompok %}
-    <div onclick="openModal({{ anggota.id }})" class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer card-hover border border-gray-100 flex flex-col items-center p-6 text-center">
-        <img class="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gray-200" src="{% static anggota.foto %}" alt="{{ anggota.nama }}">
+
+    <!-- CARD -->
+    <div 
+        data-id="{{ anggota.id }}"
+        class="card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer card-hover border border-gray-100 flex flex-col items-center p-6 text-center"
+    >
+        <img class="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gray-200" 
+             src="{% static anggota.foto %}" 
+             alt="{{ anggota.nama }}">
+             
         <h3 class="text-xl font-bold text-gray-800">{{ anggota.nama }}</h3>
         <p class="text-sm font-semibold text-blue-600 mb-1">{{ anggota.role }}</p>
         <p class="text-xs text-gray-500">{{ anggota.npm }}</p>
     </div>
 
-    <div id="modal-{{ anggota.id }}" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50 transition-opacity">
+    <!-- MODAL -->
+    <div id="modal-{{ anggota.id }}" 
+         class="modal fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
+
         <div class="bg-white rounded-2xl max-w-lg w-full mx-4 overflow-hidden shadow-2xl relative animate-[fadeIn_0.3s_ease-out]">
-            <button onclick="closeModal({{ anggota.id }})" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl z-10">&times;</button>
             
+            <!-- CLOSE BUTTON -->
+            <button class="close-btn absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl z-10">
+                &times;
+            </button>
+            
+            <!-- HEADER -->
             <div class="bg-gray-50 p-6 flex flex-col items-center border-b">
-                <img class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-md mb-4" src="{% static anggota.foto %}" alt="{{ anggota.nama }}">
+                <img class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-md mb-4" 
+                     src="{% static anggota.foto %}" 
+                     alt="{{ anggota.nama }}">
+                     
                 <h2 class="text-2xl font-bold text-gray-900">{{ anggota.nama }}</h2>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full mt-2">{{ anggota.role }}</span>
+                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full mt-2">
+                    {{ anggota.role }}
+                </span>
             </div>
             
+            <!-- CONTENT -->
             <div class="p-6">
                 <div class="mb-4">
-                    <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">NPM / NIM</p>
+                    <p class="text-sm text-gray-500 uppercase font-semibold">NPM / NIM</p>
                     <p class="text-gray-800 font-medium">{{ anggota.npm }}</p>
                 </div>
+
                 <div class="mb-4">
-                    <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Program Studi</p>
+                    <p class="text-sm text-gray-500 uppercase font-semibold">Program Studi</p>
                     <p class="text-gray-800 font-medium">{{ anggota.prodi }}</p>
                 </div>
+
                 <div class="mb-6">
-                    <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Bio Singkat</p>
+                    <p class="text-sm text-gray-500 uppercase font-semibold">Bio Singkat</p>
                     <p class="text-gray-700 leading-relaxed mt-1">{{ anggota.bio }}</p>
                 </div>
                 
+                <!-- SOCIAL -->
                 <div class="flex justify-center gap-4 mt-6">
-                    <a href="{{ anggota.linkedin }}" target="_blank" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
+                    <a href="{{ anggota.linkedin }}" target="_blank"
+                       class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="{{ anggota.github }}" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900 transition">
+
+                    <a href="{{ anggota.github }}" target="_blank"
+                       class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900 transition">
                         <i class="fab fa-github"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
     {% endfor %}
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    function openModal(id) {
-        document.getElementById('modal-' + id).classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
+    const cards = document.querySelectorAll(".card");
+    const modals = document.querySelectorAll(".modal");
 
+    cards.forEach(card => {
+        card.addEventListener("click", function () {
+            const id = this.dataset.id;
+            const modal = document.getElementById("modal-" + id);
 
-    function closeModal(id) {
-        document.getElementById('modal-' + id).classList.add('hidden');
-        document.body.style.overflow = 'auto'; 
-    }
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        });
+    });
 
+    document.querySelectorAll(".close-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const modal = this.closest(".modal");
+            modal.classList.add("hidden");
+            document.body.style.overflow = "auto";
+        });
+    });
 
-    window.onclick = function(event) {
-        if (event.target.classList.contains('bg-opacity-60')) {
-            document.querySelectorAll('[id^="modal-"]').forEach(modal => {
-                modal.classList.add('hidden');
-            });
-            document.body.style.overflow = 'auto';
-        }
-    }
+    modals.forEach(modal => {
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.add("hidden");
+                document.body.style.overflow = "auto";
+            }
+        });
+    });
+
+});
 </script>
+
 <style>
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
 </style>
 {% endblock %}

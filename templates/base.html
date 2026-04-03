@@ -10,49 +10,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
-        /* Menggunakan style dari database */
-        body {
-            background-color: {{ style.bg_color|default:"#f3f4f6" }};
-            font-family: {{ style.font_family|default:"ui-sans-serif, system-ui, sans-serif" }};
-            transition: background-color 0.3s ease;
+        :root {
+            --bg-color: {{ style.bg_color|default:"#f3f4f6" }};
+            --font-family: {{ style.font_family|default:"ui-sans-serif, system-ui, sans-serif" }};
         }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <nav class="bg-white bg-opacity-90 shadow-md backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{% url 'home' %}" class="text-xl font-bold text-gray-800">🚀 KelompokKeren</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    {% if user.is_authenticated %}
-                        <span class="text-sm text-gray-600 hidden md:block">Halo, {{ user.email }}</span>
-                        <form method="post" action="{% url 'account_logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium transition">Logout</button>
-                        </form>
-                    {% else %}
-                        <a href="{% url 'account_login' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Login</a>
-                        <a href="{% provider_login_url 'google' %}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
-                            <i class="fab fa-google"></i> Google
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </nav>
+    {% include "navbar.html" %}
 
     <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-gray-800 text-white mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
-            <p>&copy; 2024 Tugas Kelompok PKPL. All rights reserved.</p>
-        </div>
-    </footer>
+    {% include "footer.html" %}
 
     {% block scripts %}{% endblock %}
 </body>
