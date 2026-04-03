@@ -1,12 +1,11 @@
 from django.db import models
 
-# Create your models here.
-
-from django.db import models
-
 class WebStyle(models.Model):
-    bg_color = models.CharField(max_length=20, default="#ffffff")
-    font_family = models.CharField(max_length=50, default="Arial, sans-serif")
+    bg_color = models.CharField(max_length=20, default="#f3f4f6") 
+    
+    secondary_color = models.CharField(max_length=20, default="#4f46e5") 
+    
+    font_family = models.CharField(max_length=255, default="ui-sans-serif, system-ui, sans-serif")
 
     @classmethod
     def get_settings(cls):

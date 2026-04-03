@@ -78,6 +78,7 @@ def edit_style(request):
     style = WebStyle.get_settings()
     if request.method == "POST":
         style.bg_color = request.POST.get('bg_color')
+        style.secondary_color = request.POST.get('secondary_color')
         style.font_family = request.POST.get('font_family')
         style.save()
         return redirect('home')

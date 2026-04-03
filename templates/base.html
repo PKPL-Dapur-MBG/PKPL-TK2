@@ -12,8 +12,20 @@
     <style>
         :root {
             --bg-color: {{ style.bg_color|default:"#f3f4f6" }};
-            --font-family: {{ style.font_family|default:"ui-sans-serif, system-ui, sans-serif" }};
+            --secondary-color: {{ style.secondary_color|default:"#4f46e5" }};
+            --font-family: {{ style.font_family|default:"ui-sans-serif, system-ui, sans-serif"|safe }};
         }
+        
+        body {
+            background-color: var(--bg-color);
+            font-family: var(--font-family);
+            transition: all 0.3s ease;
+        }
+
+        .bg-accent { background-color: var(--secondary-color) !important; }
+        .text-accent { color: var(--secondary-color) !important; }
+        .border-accent { border-color: var(--secondary-color) !important; }
+        .hover-bg-accent:hover { filter: brightness(0.85); transition: 0.3s; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
